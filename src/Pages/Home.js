@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { AlertContext } from '../Helpers/AlertContext';
-import { Box, Button, CircularProgress, Container, Grid, Icon, IconButton, LinearProgress, makeStyles, TextField } from "@material-ui/core";
+import { Box, Grid, Icon, IconButton, makeStyles, TextField } from "@material-ui/core";
 import { GetPokemons, GetTypes } from '../Services/Pokedex';
 import { DataGrid } from '@material-ui/data-grid';
 import { Autocomplete } from '@material-ui/lab';

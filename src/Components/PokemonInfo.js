@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Badge, Box, Card, CardContent, CardHeader, CardMedia, Chip, Grid, Hidden, Icon, IconButton, makeStyles, Paper, Typography } from '@material-ui/core'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardHeader, CardMedia, Chip, Grid, Icon, IconButton, makeStyles, Paper, Typography } from '@material-ui/core'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { FavoriteActions } from '../Actions/FavoriteActions';

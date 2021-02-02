@@ -17,7 +17,7 @@ import { Auth } from "aws-amplify";
 import { Copyright } from "../Components/Copyright";
 import { useDispatch } from "react-redux";
 import { UserActions } from "../Actions/UserActions";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AlertContext } from "../Helpers/AlertContext";
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -77,7 +77,6 @@ export const Login = () => {
 	const passwordHelper = errors.password[0]?.message;
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const location = useLocation();
 	const alerts = useContext(AlertContext);
     const SignIn = async event => {
         event.preventDefault();
@@ -89,9 +88,7 @@ export const Login = () => {
 			);
 			const user = { userName: response.username, ...response.attributes };
 			dispatch(UserActions.SetUser(user));
-			console.log(user);
-			console.log(location.state);
-			history.replace(location.state ?? { pathname: "/" });
+			history.replace({ pathname: "/" });
         } catch (e) {
 			if(e.code === "UserNotConfirmedException"){
 				alerts.setAlert({ 
