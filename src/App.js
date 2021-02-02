@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Alerts } from "./Components/Alerts";
+import { PrivateRoute } from "./Components/PrivateRouter";
+import { AlertContext } from "./Helpers/AlertContext";
+import { Confirm } from "./Pages/Confirm";
+import { Dashboard } from "./Pages/Dashboard";
+import { Login } from "./Pages/Login";
+import { SignUp } from "./Pages/SignUp";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [alertData, setAlert] = useState(null);
+	return (
+		<AlertContext.Provider value={{ alertData, setAlert }}>
+			<Router>
+				<Switch>
+					<Route path="/login" component={Login} />
+					<Route path="/signup" component={SignUp} />
+					<Route path="/confirm/:userName" component={Confirm} />
+					<PrivateRoute path="/">
+						<Dashboard />
+					</PrivateRoute>
+					<PrivateRoute path="*">
+						<Dashboard />
+					</PrivateRoute>
+				</Switch>
+			</Router>
+			<Alerts />
+		</AlertContext.Provider>
+	);
 }
 
 export default App;
